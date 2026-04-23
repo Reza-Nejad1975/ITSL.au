@@ -1,0 +1,97 @@
+/* ========================================= */
+/* 1. GLOBAL & NAVIGATION                     */
+/* ========================================= */
+* {
+    scroll-behavior: smooth;
+    cursor: default;
+}
+
+body {
+    background-color: #050A18; 
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 123, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+}
+
+/* Ensures the dropdown stays open when mouse moves into the menu */
+nav .group:hover .absolute {
+    display: grid;
+    pointer-events: auto; /* Allows clicking links inside */
+}
+
+/* Fix for links inside the dropdown */
+.group .absolute a {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+/* ========================================= */
+/* 2. ANIMATIONS                              */
+/* ========================================= */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(1deg) scale(1.02); }
+    100% { transform: translateY(0px) rotate(0deg) scale(1); }
+}
+
+.animate-float { animation: float 15s ease-in-out infinite; }
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* ========================================= */
+/* 3. THE BRAND ROLLER (FIXED & BOX-FREE)    */
+/* ========================================= */
+
+.animate-marquee {
+    animation: marquee-scroll 120s linear infinite;
+    display: flex;
+    align-items: center;
+}
+
+/* Stops the roll when mouse is over the container as requested */
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Perfect Spacing: Every logo center is exactly 200px from the next */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px; 
+    flex-shrink: 0;
+}
+
+.brand-logo-free {
+    height: 45px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    
+    /* THE BOX-FREE SOLUTION: 
+       Mix-blend-mode 'multiply' for the white background section */
+    mix-blend-mode: multiply; 
+    
+    /* Stable appearance: No scale or color shifts on hover */
+    opacity: 0.7; 
+    transition: opacity 0.3s ease;
+}
+
+.brand-logo-free:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.brand-text-divider {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    padding: 0 60px;
+}
